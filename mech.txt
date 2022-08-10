@@ -1,0 +1,32 @@
+```lua
+RegisterServerEvent('mech:combination1') -- Item Combination 1 
+AddEventHandler('mech:combination1', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local xItem1 = xPlayer.getInventoryItem('fixtool') -- Item 1 
+    
+    if xItem1.count > 0 then  -- Item 1  count 
+        TriggerClientEvent('mech:animation' , source) -- Play animation 
+        Citizen.Wait(8000) -- Time progress , in ms, 1 second = 1000 ms , the value is 10000 so , its 10 seconds
+        xPlayer.addInventoryItem('fixkit', 1)    -- add the combination Items 
+        xPlayer.removeInventoryItem('fixtool', 1) -- removing the water (Item 1)
+    else 
+        TriggerClientEvent('esx:showNotification', source, 'You dont have ToolBox to Craft.')
+    end 
+end)
+
+ -----menu 2
+RegisterServerEvent('mech:combination2') -- Item Combination 2
+AddEventHandler('mech:combination2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local xItem1 = xPlayer.getInventoryItem('carotool') -- Item 1 
+    
+    if xItem1.count > 0 then  -- Item 1  count 
+        TriggerClientEvent('mech:animation' , source) -- Play animation 
+        Citizen.Wait(8000) -- Time progress , in ms, 1 second = 1000 ms , the value is 10000 so , its 10 seconds
+        xPlayer.addInventoryItem('carokit', 1)    -- add the combination Items 
+        xPlayer.removeInventoryItem('carotool', 1) -- removing the water (Item 1)
+    else 
+        TriggerClientEvent('esx:showNotification', source, 'You dont have Car Tool to Craft.')
+    end 
+end)
+```
